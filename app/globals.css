@@ -96,6 +96,11 @@ a {
   max-width: 62ch;
 }
 
+.leads {
+  font-size: 18px;
+  color: var(--ink-soft);
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -681,6 +686,174 @@ header.nav {
 #mistake,
 #stories {
   background: var(--mist);
+}
+
+.image-carousel-section {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(227, 249, 249, 0.72)),
+    var(--paper);
+  overflow: hidden;
+  position: relative;
+}
+
+.image-carousel-section::before {
+  content: "";
+  position: absolute;
+  inset: 34px max(22px, calc((100vw - var(--maxw)) / 2 + 22px)) auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(18, 110, 110, 0.2), transparent);
+}
+
+.image-carousel-title {
+  max-width: 23ch;
+}
+
+.image-carousel-copy {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 58ch;
+}
+
+.image-carousel-shell {
+  position: relative;
+  margin-top: 38px;
+  padding: 0 56px;
+}
+
+.image-carousel-track {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 10px 0 18px;
+}
+
+.image-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.image-carousel-card {
+  flex: 0 0 calc((100% - 36px) / 3);
+  min-width: 0;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(22, 48, 48, 0.1);
+  box-shadow: 0 22px 46px -34px rgba(18, 110, 110, 0.65);
+  scroll-snap-align: start;
+  text-align: left;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.image-carousel-card:hover,
+.image-carousel-card.active {
+  transform: translateY(-6px);
+  border-color: rgba(66, 200, 200, 0.42);
+  box-shadow: 0 28px 58px -34px rgba(18, 110, 110, 0.85);
+}
+
+.image-carousel-media {
+  aspect-ratio: 1.08 / 1;
+  overflow: hidden;
+  background: var(--mist);
+  position: relative;
+}
+
+.image-carousel-media::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 35%;
+  background: linear-gradient(180deg, transparent, rgba(12, 82, 82, 0.18));
+}
+
+.image-carousel-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.image-carousel-card:hover .image-carousel-media img,
+.image-carousel-card.active .image-carousel-media img {
+  transform: scale(1.035);
+}
+
+.image-carousel-content {
+  padding: 18px 18px 20px;
+}
+
+.image-carousel-content span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  border-radius: 999px;
+  background: var(--mist);
+  color: var(--teal-deep);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  margin-bottom: 12px;
+}
+
+.image-carousel-content h3 {
+  font-size: 21px;
+  color: var(--ink);
+  margin-bottom: 7px;
+}
+
+.image-carousel-content p {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.image-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  background: #fff;
+  color: var(--teal-deep);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease;
+  box-shadow: 0 16px 34px -22px rgba(18, 110, 110, 0.85);
+}
+
+.image-carousel-arrow:hover {
+  background: var(--mist);
+  border-color: var(--teal);
+  transform: translateY(-50%) scale(1.04);
+}
+
+.image-carousel-arrow.prev {
+  left: 0;
+}
+
+.image-carousel-arrow.next {
+  right: 0;
+}
+
+.image-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 4px;
 }
 
 .mistake-grid,
@@ -1851,6 +2024,10 @@ footer .disc b {
     margin-right: auto;
   }
 
+  .image-carousel-card {
+    flex-basis: calc((100% - 18px) / 2);
+  }
+
   .doc-photo {
     max-width: 440px;
     margin: 0 auto;
@@ -1985,6 +2162,18 @@ footer .disc b {
   .vid {
     flex: 0 0 82%;
     scroll-snap-align: start;
+  }
+
+  .image-carousel-shell {
+    padding: 0;
+  }
+
+  .image-carousel-card {
+    flex-basis: 86%;
+  }
+
+  .image-carousel-arrow {
+    display: none;
   }
 
   .ba-grid {

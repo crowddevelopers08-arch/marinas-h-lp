@@ -8,6 +8,7 @@ import { FinalCtaSection } from "@/components/hernia/FinalCtaSection";
 import { Footer } from "@/components/hernia/Footer";
 import { Header } from "@/components/hernia/Header";
 import { HeroSection } from "@/components/hernia/HeroSection";
+import { ImageCarouselSection } from "@/components/hernia/ImageCarouselSection";
 import { MistakeSection } from "@/components/hernia/MistakeSection";
 import { StickyBar } from "@/components/hernia/StickyBar";
 import { StoriesSection } from "@/components/hernia/StoriesSection";
@@ -23,6 +24,7 @@ export default function Home() {
       <HeroSection />
       <TrustStrip />
       <SymptomCheckSection />
+      <ImageCarouselSection />
       <MistakeSection />
       <WomenSection />
       <DoctorSection />

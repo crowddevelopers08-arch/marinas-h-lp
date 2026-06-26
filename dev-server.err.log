@@ -1,8 +1,8 @@
 ⨯ Another next dev server is already running.
 
 - Local:        http://localhost:3001
-- PID:          9712
+- PID:          43812
 - Dir:          D:\CrowMedi\marina-clinic\marina
 - Log:          .next\dev\logs\next-development.log
 
-Run taskkill /PID 9712 /F to stop it.
+Run taskkill /PID 43812 /F to stop it.
