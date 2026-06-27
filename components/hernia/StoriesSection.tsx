@@ -5,7 +5,7 @@ import { Reveal } from "./Reveal";
 
 const stories = [
   {
-    src: "https://res.cloudinary.com/dthj7fakc/video/upload/v1781681469/Postpartum_weight_gain_100__normal_️_WATCH_FULLY__._._.__Laparoscopy__Surgeon__Doctor__Pregnancy__Women_MP4_wfpgnl.mp4",
+    src: "https://res.cloudinary.com/dthj7fakc/video/upload/v1781762970/video1_kaazse.mp4",
     caption: "Postpartum weight gain — is it always fat?",
   },
   {
@@ -16,23 +16,40 @@ const stories = [
     src: "https://res.cloudinary.com/dthj7fakc/video/upload/v1781681467/Most_people_think_every_tummy_bulge_is_fat._But_sometimes__it_could_be_something_entirely_different._A_hernia_is_a_weakness_in_the_abdominal_wall_that_allow_gfuapm.mp4",
     caption: "Not every tummy bulge is fat — it could be a hernia.",
   },
+  {
+    src: "/marinias1_squished.mp4",
+    caption: "A quick doctor note on hernia symptoms and care.",
+  },
+  {
+    src: "/output 1hernia_squished.mp4",
+    caption: "What to know before delaying hernia treatment.",
+  },
 ];
 
 export function StoriesSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  function getScrollStep(el: HTMLDivElement) {
+    const item = el.querySelector<HTMLElement>(".vid");
+    if (!item) return el.scrollWidth / stories.length;
+
+    const styles = window.getComputedStyle(el);
+    const gap = Number.parseFloat(styles.columnGap || styles.gap || "0") || 0;
+    return item.offsetWidth + gap;
+  }
+
   function handleScroll() {
     const el = scrollRef.current;
     if (!el) return;
-    const index = Math.round(el.scrollLeft / (el.scrollWidth / stories.length));
+    const index = Math.round(el.scrollLeft / getScrollStep(el));
     setActiveIndex(Math.min(index, stories.length - 1));
   }
 
   function goTo(index: number) {
     const el = scrollRef.current;
     if (!el) return;
-    el.scrollTo({ left: (el.scrollWidth / stories.length) * index, behavior: "smooth" });
+    el.scrollTo({ left: getScrollStep(el) * index, behavior: "smooth" });
     setActiveIndex(index);
   }
 
@@ -40,17 +57,18 @@ export function StoriesSection() {
     <section className="sec" id="stories">
       <div className="wrap">
         <Reveal>
-          <span className="eyebrow">Real stories from real patients</span>
+          <span className="eyebrow">What Doctor Say</span>
           <h2 className="section-title">
-            People who waited too long - and what changed after.
+            Stories From Those Who Chose Change.
           </h2>
-          <div className="vids" ref={scrollRef} onScroll={handleScroll}>
+          <div className="vids stories-carousel" ref={scrollRef} onScroll={handleScroll}>
             {stories.map(({ src, caption }) => (
               <div className="vid" key={src}>
                 <video
                   src={src}
                   controls
                   playsInline
+                  preload="metadata"
                   style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "inherit", display: "block" }}
                 />
                 <div className="ov" style={{ position: "relative", background: "none", pointerEvents: "none" }}>
@@ -59,13 +77,14 @@ export function StoriesSection() {
               </div>
             ))}
           </div>
-          <div className="carousel-dots">
+          <div className="carousel-dots stories-carousel-dots">
             {stories.map((_, i) => (
               <button
                 key={i}
                 className={`carousel-dot${i === activeIndex ? " active" : ""}`}
                 onClick={() => goTo(i)}
                 aria-label={`Go to video ${i + 1}`}
+                type="button"
               />
             ))}
           </div>

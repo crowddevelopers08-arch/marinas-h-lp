@@ -1308,6 +1308,31 @@ header.nav {
   grid-template-columns: repeat(3, 1fr);
 }
 
+.stories-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 10px;
+  scrollbar-width: none;
+}
+
+.stories-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.stories-carousel .vid {
+  flex: 0 0 min(300px, calc((100% - 36px) / 3));
+  scroll-snap-align: start;
+}
+
+.carousel-dots.stories-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
 .vid {
   position: relative;
   border-radius: 18px;
@@ -2024,6 +2049,15 @@ footer .disc b {
     margin-right: auto;
   }
 
+  .stories-carousel {
+    display: flex;
+    max-width: 100%;
+  }
+
+  .stories-carousel .vid {
+    flex: 0 0 calc((100% - 18px) / 2);
+  }
+
   .image-carousel-card {
     flex-basis: calc((100% - 18px) / 2);
   }
@@ -2162,6 +2196,10 @@ footer .disc b {
   .vid {
     flex: 0 0 82%;
     scroll-snap-align: start;
+  }
+
+  .stories-carousel .vid {
+    flex: 0 0 82%;
   }
 
   .image-carousel-shell {
