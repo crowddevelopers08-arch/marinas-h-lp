@@ -767,7 +767,7 @@ header.nav {
 }
 
 .image-carousel-media {
-  aspect-ratio: 1.08 / 1;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   background: var(--mist);
   position: relative;
@@ -790,7 +790,7 @@ header.nav {
 
 .image-carousel-card:hover .image-carousel-media img,
 .image-carousel-card.active .image-carousel-media img {
-  transform: scale(1.035);
+  transform: scale(1.0);
 }
 
 .image-carousel-content {

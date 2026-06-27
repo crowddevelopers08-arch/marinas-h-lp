@@ -15,9 +15,9 @@ const images = [
   {
     src: "https://res.cloudinary.com/dthj7fakc/image/upload/v1782466686/herina-image1_xan4cv.png",
     alt: "Modern hernia care reference image",
-    label: "Repair",
-    title: "See the weak spot",
-    copy: "Know what the surgeon is actually looking to fix.",
+    label: "",
+    title: "",
+    copy: "",
   },
   {
     src: "https://res.cloudinary.com/dthj7fakc/image/upload/v1782466686/herina-image2_bwzqf4.png",
@@ -119,11 +119,11 @@ export function ImageCarouselSection() {
                       sizes="(max-width: 620px) 84vw, (max-width: 900px) 46vw, 31vw"
                     />
                   </div>
-                  <div className="image-carousel-content">
+                  {/* <div className="image-carousel-content">
                     <span>{image.label}</span>
                     <h3>{image.title}</h3>
                     <p>{image.copy}</p>
-                  </div>
+                  </div> */}
                 </div>
               ))}
             </div>
