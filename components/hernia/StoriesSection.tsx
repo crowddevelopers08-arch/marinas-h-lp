@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Reveal } from "./Reveal";
 
 const stories = [
@@ -17,27 +17,43 @@ const stories = [
     caption: "Not every tummy bulge is fat — it could be a hernia.",
   },
   {
-    src: "/marinias1_squished.mp4",
+    src: "https://ik.imagekit.io/tpucbav8z/output%201hernia_squished.mp4",
     caption: "A quick doctor note on hernia symptoms and care.",
   },
   {
-    src: "/output 1hernia_squished.mp4",
+    src: "https://ik.imagekit.io/tpucbav8z/marinias1_squished.mp4",
     caption: "What to know before delaying hernia treatment.",
   },
 ];
 
+function ArrowLeft() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="15 18 9 12 15 6" />
+    </svg>
+  );
+}
+
+function ArrowRight() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="9 18 15 12 9 6" />
+    </svg>
+  );
+}
+
+function getScrollStep(el: HTMLDivElement) {
+  const item = el.querySelector<HTMLElement>(".vid");
+  if (!item) return el.scrollWidth / stories.length;
+
+  const styles = window.getComputedStyle(el);
+  const gap = Number.parseFloat(styles.columnGap || styles.gap || "0") || 0;
+  return item.offsetWidth + gap;
+}
+
 export function StoriesSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-
-  function getScrollStep(el: HTMLDivElement) {
-    const item = el.querySelector<HTMLElement>(".vid");
-    if (!item) return el.scrollWidth / stories.length;
-
-    const styles = window.getComputedStyle(el);
-    const gap = Number.parseFloat(styles.columnGap || styles.gap || "0") || 0;
-    return item.offsetWidth + gap;
-  }
 
   function handleScroll() {
     const el = scrollRef.current;
@@ -53,6 +69,34 @@ export function StoriesSection() {
     setActiveIndex(index);
   }
 
+  function move(direction: "prev" | "next") {
+    const nextIndex =
+      direction === "next"
+        ? (activeIndex + 1) % stories.length
+        : (activeIndex - 1 + stories.length) % stories.length;
+
+    goTo(nextIndex);
+  }
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 621px)");
+
+    const timer = window.setInterval(() => {
+      if (!mediaQuery.matches) return;
+
+      const el = scrollRef.current;
+      if (!el) return;
+
+      setActiveIndex((currentIndex) => {
+        const nextIndex = (currentIndex + 1) % stories.length;
+        el.scrollTo({ left: getScrollStep(el) * nextIndex, behavior: "smooth" });
+        return nextIndex;
+      });
+    }, 4500);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
   return (
     <section className="sec" id="stories">
       <div className="wrap">
@@ -61,21 +105,41 @@ export function StoriesSection() {
           <h2 className="section-title">
             Stories From Those Who Chose Change.
           </h2>
-          <div className="vids stories-carousel" ref={scrollRef} onScroll={handleScroll}>
-            {stories.map(({ src, caption }) => (
-              <div className="vid" key={src}>
-                <video
-                  src={src}
-                  controls
-                  playsInline
-                  preload="metadata"
-                  style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "inherit", display: "block" }}
-                />
-                <div className="ov" style={{ position: "relative", background: "none", pointerEvents: "none" }}>
-                  <div className="nm story-caption" style={{ pointerEvents: "none" }}>&quot;{caption}&quot;</div>
+          <div className="stories-carousel-shell">
+            <button
+              className="stories-carousel-arrow prev"
+              onClick={() => move("prev")}
+              aria-label="Previous video"
+              type="button"
+            >
+              <ArrowLeft />
+            </button>
+
+            <div className="vids stories-carousel" ref={scrollRef} onScroll={handleScroll}>
+              {stories.map(({ src, caption }) => (
+                <div className="vid" key={src}>
+                  <video
+                    src={src}
+                    controls
+                    playsInline
+                    preload="metadata"
+                    style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "inherit", display: "block" }}
+                  />
+                  <div className="ov" style={{ position: "relative", background: "none", pointerEvents: "none" }}>
+                    <div className="nm story-caption" style={{ pointerEvents: "none" }}>&quot;{caption}&quot;</div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+
+            <button
+              className="stories-carousel-arrow next"
+              onClick={() => move("next")}
+              aria-label="Next video"
+              type="button"
+            >
+              <ArrowRight />
+            </button>
           </div>
           <div className="carousel-dots stories-carousel-dots">
             {stories.map((_, i) => (
