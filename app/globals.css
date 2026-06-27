@@ -270,10 +270,11 @@ header.nav {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
-  gap: clamp(28px, 3.5vw, 52px);
+  grid-template-columns: minmax(0, 0.92fr) minmax(560px, 1.25fr);
+  gap: clamp(30px, 4vw, 58px);
   align-items: center;
   width: 100%;
+  max-width: 1240px;
 }
 
 .hero-copy {
@@ -350,7 +351,6 @@ header.nav {
   display: flex;
   align-items: center;
   gap: 12px;
-  flex-wrap: wrap;
   font-size: 13.5px;
   color: var(--ink-soft);
   font-weight: 600;
@@ -402,9 +402,14 @@ header.nav {
   overflow: hidden;
   background: var(--teal-deep);
   object-fit: cover;
-  aspect-ratio: 16 / 18;
+  top: -50px;
+  aspect-ratio: 16 / 10.5;
   box-shadow: 0 34px 76px -38px rgba(18, 110, 110, 0.82);
   border: 1px solid rgba(255, 255, 255, 0.42);
+}
+
+.vsl-mobile {
+  display: none;
 }
 
 .vsl-bg {
@@ -443,7 +448,12 @@ header.nav {
   gap: 16px;
   color: #fff;
   text-align: center;
-  padding: 34px;
+  padding: 28px;
+}
+
+.vsl-inner video {
+  height: 100%;
+  object-fit: cover;
 }
 
 .vsl-inner::before {
@@ -2041,7 +2051,7 @@ footer .disc b {
   }
 
   .hero-grid {
-    grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+    grid-template-columns: minmax(0, 0.95fr) minmax(420px, 1.05fr);
     gap: 24px;
   }
 }
@@ -2067,8 +2077,8 @@ footer .disc b {
   }
 
   .vsl {
-    aspect-ratio: 16 / 9;
-    max-width: 520px;
+    aspect-ratio: 12 / 9;
+    max-width: 630px;
     margin: 0 auto;
   }
 
@@ -2159,10 +2169,32 @@ footer .disc b {
     padding: 32px 0 36px;
   }
 
+  .hero-grid {
+    display: block;
+    gap: 18px;
+  }
+
+  .hero-copy {
+    display: block;
+  }
+
+  .hero .pill {
+    margin-bottom: 0;
+  }
+
   .hero h1 {
     font-size: clamp(26px, 7.5vw, 34px);
     max-width: none;
-    margin-bottom: 12px;
+    margin-bottom: 0;
+  }
+
+  .vsl-desktop {
+    display: none;
+  }
+
+  .vsl-mobile {
+    display: block;
+    margin: 18px 0;
   }
 
   .hero p.sub {
@@ -2202,6 +2234,7 @@ footer .disc b {
 
   .trust-inline {
     font-size: 12px;
+    flex-wrap: wrap;
     gap: 8px;
   }
 
@@ -2211,9 +2244,15 @@ footer .disc b {
   }
 
   .vsl {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 10;
+    width: 100%;
     max-width: 100%;
+    top: 0;
     border-radius: 18px;
+  }
+
+  .vsl-inner {
+    padding: 14px;
   }
 
   .signs {

@@ -4,7 +4,7 @@ export function HeroSection() {
   return (
     <section className="hero" id="hero">
       <div className="wrap hero-grid">
-        <div>
+        <div className="hero-copy">
           <span className="pill">
             <span className="dot" /> Watch before you decide what to do
           </span>
@@ -12,6 +12,18 @@ export function HeroSection() {
             Living with a Hernia is a choice you are making{" "}
             <em>Every Single Day.</em>
           </h1>
+          <div className="vsl vsl-mobile">
+            <div className="vsl-bg" />
+            {/* <span className="vsl-tag">Watch first</span> */}
+            <div className="vsl-inner">
+              <video
+                src="https://ik.imagekit.io/tpucbav8z/output%201hernia_squished.mp4"
+                controls
+                playsInline
+                style={{ width: "100%", borderRadius: "inherit", display: "block" }}
+              />
+            </div>
+          </div>
           <p className="sub">
             The bulge, the heaviness, the pull when you lift or cough - most
             people wait months hoping it fades. It does not. A short, honest
@@ -38,12 +50,12 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="vsl">
+        <div className="vsl vsl-desktop">
           <div className="vsl-bg" />
           <span className="vsl-tag">Watch first</span>
           <div className="vsl-inner">
             <video
-              src="https://res.cloudinary.com/dthj7fakc/video/upload/v1781681469/Postpartum_weight_gain_100__normal_️_WATCH_FULLY__._._.__Laparoscopy__Surgeon__Doctor__Pregnancy__Women_MP4_wfpgnl.mp4"
+              src="https://ik.imagekit.io/tpucbav8z/output%201hernia_squished.mp4"
               controls
               playsInline
               style={{ width: "100%", borderRadius: "inherit", display: "block" }}
