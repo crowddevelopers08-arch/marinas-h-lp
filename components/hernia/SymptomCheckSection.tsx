@@ -6,6 +6,7 @@ import { Reveal } from "./Reveal";
 
 const symptoms = [
   "A visible bulge in your abdomen or groin",
+  "Pain while lifting heavy objects",
   "Discomfort while coughing or sneezing",
   "A feeling of heaviness or pressure in your stomach",
   "Swelling that appears standing, disappears lying down",
