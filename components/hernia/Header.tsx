@@ -1,5 +1,8 @@
 import Image from "next/image";
 
+const PHONE_NUMBER = "+91 98840 00171";
+const PHONE_HREF = "tel:+919884000171";
+
 export function Header() {
   return (
     <>
@@ -21,9 +24,14 @@ export function Header() {
             />
           </div>
           <span className="nav-tag">Hernia &amp; Diastasis Recti Care</span>
-          <a href="#book" className="btn">
-            Book Consultation
-          </a>
+          <div className="nav-actions">
+            <a className="nav-phone" href={PHONE_HREF} aria-label={`Call Marina's Clinic at ${PHONE_NUMBER}`}>
+              {PHONE_NUMBER}
+            </a>
+            <a href="#book" className="btn">
+              Book Consultation
+            </a>
+          </div>
         </div>
       </header>
     </>

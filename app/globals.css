@@ -217,6 +217,43 @@ header.nav {
   font-size: 14px;
 }
 
+.nav-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.nav-phone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0;
+  border: 1.5px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--teal-deep);
+  font-family: var(--font-inter), sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease,
+    padding 0.18s ease;
+}
+
+.nav-phone:hover,
+.nav-phone:focus-visible {
+  padding: 10px 16px;
+  background: var(--mist);
+  border-color: transparent;
+  transform: translateY(-2px);
+  outline: none;
+}
+
 .nav-tag {
   font-size: 13px;
   color: var(--ink-soft);
@@ -556,6 +593,44 @@ header.nav {
   width: 1px;
   height: 26px;
   background: rgba(255, 255, 255, 0.16);
+}
+
+.stats-banner {
+  background: #4fbfc7;
+  color: #fff;
+  padding: 64px 0 72px;
+}
+
+.stats-banner-grid {
+  width: min(100%, 1480px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: start;
+  text-align: center;
+}
+
+.stats-banner-item {
+  min-width: 0;
+}
+
+.stats-banner-value {
+  color: #fff;
+  font-family: var(--font-inter), sans-serif;
+  font-size: clamp(34px, 3vw, 46px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  margin-bottom: 12px;
+}
+
+.stats-banner-label {
+  color: #fff;
+  font-family: var(--font-inter), sans-serif;
+  font-size: clamp(15px, 1.25vw, 18px);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0;
 }
 
 #check,
@@ -1758,6 +1833,13 @@ footer {
   font-size: 13px;
 }
 
+.footer-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 320px);
+  gap: 44px;
+  align-items: start;
+}
+
 footer .f-top {
   display: flex;
   justify-content: space-between;
@@ -1786,6 +1868,37 @@ footer .disc {
 
 footer .disc b {
   color: #b5e8e8;
+}
+
+.footer-contact {
+  justify-self: end;
+  max-width: 320px;
+  text-align: right;
+}
+
+footer .f-contact-label {
+  color: #b5e8e8;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+footer .f-address {
+  color: #fff;
+  font-style: normal;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.55;
+  margin-bottom: 12px;
+}
+
+footer .f-phone {
+  color: var(--coral);
+  display: inline-flex;
+  font-size: 15px;
+  font-weight: 800;
 }
 
 .sticky {
@@ -2132,6 +2245,59 @@ footer .disc b {
     margin: 0 auto;
   }
 
+  .nav-in {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 14px;
+  }
+
+  .brand img {
+    width: 112px;
+    height: auto;
+  }
+
+  .nav-actions {
+    width: min(150px, 46vw);
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+
+  .nav-phone,
+  .nav-actions .btn {
+    flex: 0 0 auto;
+    min-width: 0;
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  .nav-phone {
+    min-height: 30px;
+    font-size: 12px;
+  }
+
+  .nav-phone:hover,
+  .nav-phone:focus-visible {
+    padding: 6px 7px;
+  }
+
+  .nav-actions .btn {
+    min-height: 34px;
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  .stats-banner {
+    padding: 58px 18px 64px;
+  }
+
+  .stats-banner-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 42px 24px;
+  }
+
   .women-visual {
     max-width: 460px;
     margin: 0 auto;
@@ -2156,6 +2322,67 @@ footer .disc b {
 @media (max-width: 620px) {
   .wrap {
     padding: 0 16px;
+  }
+
+  .nav-in {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 14px;
+  }
+
+  .brand img {
+    width: 112px;
+    height: auto;
+  }
+
+  .nav-actions {
+    width: min(150px, 46vw);
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+
+  .nav-phone,
+  .nav-actions .btn {
+    flex: 0 0 auto;
+    min-width: 0;
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  .nav-phone {
+    min-height: 30px;
+    font-size: 12px;
+  }
+
+  .nav-phone:hover,
+  .nav-phone:focus-visible {
+    padding: 6px 7px;
+  }
+
+  .nav-actions .btn {
+    min-height: 34px;
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  .stats-banner {
+    padding: 42px 16px 48px;
+  }
+
+  .stats-banner-grid {
+    gap: 34px 16px;
+  }
+
+  .stats-banner-value {
+    font-size: 30px;
+    margin-bottom: 8px;
+  }
+
+  .stats-banner-label {
+    font-size: 13px;
   }
 
   #book .btn {
@@ -2401,6 +2628,16 @@ footer .disc b {
 
   footer {
     padding: 36px 0 80px;
+  }
+
+  .footer-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .footer-contact {
+    justify-self: start;
+    text-align: left;
   }
 
   .sticky .l span {
