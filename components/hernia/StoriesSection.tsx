@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { Reveal } from "./Reveal";
 
 const stories = [
-  {
-    src: "https://res.cloudinary.com/dthj7fakc/video/upload/v1781762970/video1_kaazse.mp4",
-    caption: "Postpartum weight gain — is it always fat?",
-  },
+  // {
+  //   src: "https://res.cloudinary.com/dthj7fakc/video/upload/v1781762970/video1_kaazse.mp4",
+  //   caption: "Postpartum weight gain — is it always fat?",
+  // },
   {
     src: "https://res.cloudinary.com/dthj7fakc/video/upload/v1781681467/A_lot_of_moms_tell_me_the_same_thing____I_still_look_pregnant..._even_years_after_delivery.___And_many_assume_it_s_just_stubborn_fat.__But_sometimes__the_rea_w2fn73.mp4",
     caption: '"I still look pregnant... even years after delivery."',
@@ -15,14 +15,6 @@ const stories = [
   {
     src: "https://res.cloudinary.com/dthj7fakc/video/upload/v1781681467/Most_people_think_every_tummy_bulge_is_fat._But_sometimes__it_could_be_something_entirely_different._A_hernia_is_a_weakness_in_the_abdominal_wall_that_allow_gfuapm.mp4",
     caption: "Not every tummy bulge is fat — it could be a hernia.",
-  },
-  {
-    src: "https://ik.imagekit.io/tpucbav8z/output%201hernia_squished.mp4",
-    caption: "A quick doctor note on hernia symptoms and care.",
-  },
-  {
-    src: "https://ik.imagekit.io/tpucbav8z/marinias1_squished.mp4",
-    caption: "What to know before delaying hernia treatment.",
   },
 ];
 
@@ -53,6 +45,7 @@ function getScrollStep(el: HTMLDivElement) {
 
 export function StoriesSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const isVideoPlayingRef = useRef(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
   function handleScroll() {
@@ -79,10 +72,12 @@ export function StoriesSection() {
   }
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(min-width: 621px)");
+    const desktopQuery = window.matchMedia("(min-width: 621px)");
+    const mobileQuery = window.matchMedia("(max-width: 620px)");
 
     const timer = window.setInterval(() => {
-      if (!mediaQuery.matches) return;
+      if (!desktopQuery.matches && !mobileQuery.matches) return;
+      if (mobileQuery.matches && isVideoPlayingRef.current) return;
 
       const el = scrollRef.current;
       if (!el) return;
@@ -123,6 +118,15 @@ export function StoriesSection() {
                     controls
                     playsInline
                     preload="metadata"
+                    onPlay={() => {
+                      isVideoPlayingRef.current = true;
+                    }}
+                    onPause={() => {
+                      isVideoPlayingRef.current = false;
+                    }}
+                    onEnded={() => {
+                      isVideoPlayingRef.current = false;
+                    }}
                     style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "inherit", display: "block" }}
                   />
                   <div className="ov" style={{ position: "relative", background: "none", pointerEvents: "none" }}>

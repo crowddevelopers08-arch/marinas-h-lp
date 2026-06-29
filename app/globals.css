@@ -1416,6 +1416,7 @@ header.nav {
   .stories-carousel {
     display: flex;
     gap: 18px;
+    justify-content: center;
     margin-top: 0;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -1466,6 +1467,10 @@ header.nav {
 
   .stories-carousel-arrow.next {
     right: 0;
+  }
+
+  .stories-carousel-arrow {
+    display: none;
   }
 
   .carousel-dots.stories-carousel-dots {
