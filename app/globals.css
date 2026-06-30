@@ -1472,6 +1472,42 @@ header.nav {
   font-weight: 500;
 }
 
+.stories-full-video-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: fit-content;
+  margin: 24px auto 0;
+  padding: 12px 16px;
+  border: 1px solid rgba(18, 110, 110, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--ink-soft);
+  box-shadow: 0 18px 42px -34px rgba(18, 110, 110, 0.8);
+}
+
+.stories-full-video-link p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.stories-full-video-link a {
+  flex: 0 0 auto;
+  color: var(--teal-deep);
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+}
+
+.stories-full-video-link a:hover,
+.stories-full-video-link a:focus-visible {
+  color: var(--coral);
+}
+
 .carousel-dots {
   display: none;
 }
@@ -2534,6 +2570,15 @@ footer .f-phone {
   .vid {
     flex: 0 0 82%;
     scroll-snap-align: start;
+  }
+
+  .stories-full-video-link {
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+    border-radius: 18px;
+    padding: 14px 16px;
+    text-align: center;
   }
 
   .image-carousel-shell {

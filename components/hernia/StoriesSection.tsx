@@ -156,6 +156,16 @@ export function StoriesSection() {
               />
             ))}
           </div>
+          <div className="stories-full-video-link">
+            <p>For the full video and more doctor guidance, watch it on Instagram.</p>
+            <a
+              href="https://www.instagram.com/dr.preethimrinalini?igsh=YWkzdmlsc3l0aWF5"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View full video
+            </a>
+          </div>
         </Reveal>
       </div>
     </section>
