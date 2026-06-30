@@ -5,20 +5,20 @@ import { useRef, useState } from "react";
 import { Reveal } from "./Reveal";
 
 const images = [
-  {
-    src: "https://res.cloudinary.com/dthj7fakc/image/upload/v1782466684/herina-image_dlichk.png",
-    alt: "Hernia treatment reference image",
-    label: "Diagnosis",
-    title: "Understand the bulge",
-    copy: "A clear visual starting point before treatment is planned.",
-  },
-  {
-    src: "https://res.cloudinary.com/dthj7fakc/image/upload/v1782466686/herina-image1_xan4cv.png",
-    alt: "Modern hernia care reference image",
-    label: "",
-    title: "",
-    copy: "",
-  },
+  // {
+  //   src: "https://res.cloudinary.com/dthj7fakc/image/upload/v1782466684/herina-image_dlichk.png",
+  //   alt: "Hernia treatment reference image",
+  //   label: "Diagnosis",
+  //   title: "Understand the bulge",
+  //   copy: "A clear visual starting point before treatment is planned.",
+  // },
+  // {
+  //   src: "https://res.cloudinary.com/dthj7fakc/image/upload/v1782466686/herina-image1_xan4cv.png",
+  //   alt: "Modern hernia care reference image",
+  //   label: "",
+  //   title: "",
+  //   copy: "",
+  // },
   {
     src: "https://res.cloudinary.com/dthj7fakc/image/upload/v1782466686/herina-image2_bwzqf4.png",
     alt: "Hernia consultation reference image",
@@ -27,22 +27,6 @@ const images = [
     copy: "Understand the next step without guessing from symptoms alone.",
   },
 ];
-
-function ArrowLeft() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="15 18 9 12 15 6" />
-    </svg>
-  );
-}
-
-function ArrowRight() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="9 6 15 12 9 18" />
-    </svg>
-  );
-}
 
 export function ImageCarouselSection() {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -68,15 +52,6 @@ export function ImageCarouselSection() {
     setActiveIndex(index);
   }
 
-  function move(direction: "prev" | "next") {
-    const nextIndex =
-      direction === "next"
-        ? Math.min(activeIndex + 1, images.length - 1)
-        : Math.max(activeIndex - 1, 0);
-
-    goTo(nextIndex);
-  }
-
   return (
     <section className="sec image-carousel-section" id="hernia-gallery">
       <div className="wrap">
@@ -91,17 +66,8 @@ export function ImageCarouselSection() {
           </p>
 
           <div className="image-carousel-shell">
-            <button
-              className="image-carousel-arrow prev"
-              onClick={() => move("prev")}
-              aria-label="Previous image"
-              type="button"
-            >
-              <ArrowLeft />
-            </button>
-
             <div
-              className="image-carousel-track"
+              className={`image-carousel-track${images.length === 1 ? " is-single" : ""}`}
               ref={trackRef}
               onScroll={setFromScroll}
             >
@@ -127,15 +93,6 @@ export function ImageCarouselSection() {
                 </div>
               ))}
             </div>
-
-            <button
-              className="image-carousel-arrow next"
-              onClick={() => move("next")}
-              aria-label="Next image"
-              type="button"
-            >
-              <ArrowRight />
-            </button>
           </div>
 
           <div className="image-carousel-dots">

@@ -17,7 +17,7 @@ export function HeroSection() {
             {/* <span className="vsl-tag">Watch first</span> */}
             <div className="vsl-inner">
               <video
-                src="https://ik.imagekit.io/tpucbav8z/output%201hernia_squished.mp4"
+                src="https://res.cloudinary.com/daclbrdse/video/upload/v1782801995/output_1hernia_squished_vmlaw3.mp4"
                 controls
                 playsInline
                 style={{ width: "100%", borderRadius: "inherit", display: "block" }}
