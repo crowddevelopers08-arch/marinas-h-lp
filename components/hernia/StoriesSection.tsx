@@ -98,7 +98,7 @@ export function StoriesSection() {
         <Reveal>
           <span className="eyebrow">What Doctor Say</span>
           <h2 className="section-title">
-            Stories From Those Who Chose Change.
+             Quick videos. Clear answers. Better decisions.
           </h2>
           <div className="stories-carousel-shell">
             <button
