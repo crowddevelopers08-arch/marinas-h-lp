@@ -5,20 +5,20 @@ import { useRef, useState } from "react";
 import { Reveal } from "./Reveal";
 
 const images = [
-  // {
-  //   src: "https://res.cloudinary.com/dthj7fakc/image/upload/v1782466684/herina-image_dlichk.png",
-  //   alt: "Hernia treatment reference image",
-  //   label: "Diagnosis",
-  //   title: "Understand the bulge",
-  //   copy: "A clear visual starting point before treatment is planned.",
-  // },
-  // {
-  //   src: "https://res.cloudinary.com/dthj7fakc/image/upload/v1782466686/herina-image1_xan4cv.png",
-  //   alt: "Modern hernia care reference image",
-  //   label: "",
-  //   title: "",
-  //   copy: "",
-  // },
+  {
+    src: "/bfaf.png",
+    alt: "Hernia treatment reference image",
+    label: "Diagnosis",
+    title: "Understand the bulge",
+    copy: "A clear visual starting point before treatment is planned.",
+  },
+  {
+    src: "/bfaf-8.png",
+    alt: "Modern hernia care reference image",
+    label: "",
+    title: "",
+    copy: "",
+  },
   {
     src: "https://res.cloudinary.com/daclbrdse/image/upload/v1782805703/5_vcpte1.png",
     alt: "Hernia consultation reference image",
