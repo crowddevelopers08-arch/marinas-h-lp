@@ -33,7 +33,7 @@ function toText(value: unknown): string {
 
 function normalizeSubmission(body: Record<string, unknown>): SubmissionBody {
   return {
-    formName: toText(body.formName) || 'Hernia Consultation Booking Form',
+    formName: toText(body.formName) || 'Hernia-Vsl-Form',
     source: toText(body.source) || 'Bariatric-Form',
     name: toText(body.name),
     phone: toText(body.phone),
@@ -129,6 +129,22 @@ function isTelecrmConfirmed(data: unknown) {
   return status === 'created' || status === 'updated' || status === 'success';
 }
 
+function telecrmValue(value: string, fallback = 'Not specified') {
+  return value || fallback;
+}
+
+function getTelecrmDetails(body: SubmissionBody, phone: string) {
+  return [
+    ['Form Name', telecrmValue(body.formName)],
+    ['Name', telecrmValue(body.name, 'Not provided')],
+    ['Phone', telecrmValue(phone, 'Not provided')],
+    ['Email', telecrmValue(body.email, 'Not provided')],
+    ['Concern', telecrmValue(body.concern)],
+    ['Source', telecrmValue(body.source || 'Website')],
+    ['URL', telecrmValue(body.pageUrl)],
+  ].map(([key, value]) => `${key}: ${value}`).join(' | ');
+}
+
 async function pushToTeleCRM(body: SubmissionBody): Promise<TelecrmResponse | null> {
   const url = process.env.TELECRM_API_URL;
   const key = process.env.TELECRM_API_KEY;
@@ -146,10 +162,14 @@ async function pushToTeleCRM(body: SubmissionBody): Promise<TelecrmResponse | nu
       name: body.name,
     },
     actions: [
+      { type: 'SYSTEM_NOTE', text: `Form Name: ${telecrmValue(body.formName)}` },
+      { type: 'SYSTEM_NOTE', text: `Name: ${telecrmValue(body.name, 'Not provided')}` },
+      { type: 'SYSTEM_NOTE', text: `Phone: ${telecrmValue(phone, 'Not provided')}` },
       { type: 'SYSTEM_NOTE', text: `Source: ${body.source || 'Website'}` },
       { type: 'SYSTEM_NOTE', text: `Email: ${body.email || 'Not provided'}` },
       { type: 'SYSTEM_NOTE', text: `URL: ${body.pageUrl || 'Not specified'}` },
-      { type: 'SYSTEM_NOTE', text: `Condition: ${body.concern || 'Not specified'}` },
+      { type: 'SYSTEM_NOTE', text: `Concern: ${body.concern || 'Not specified'}` },
+      { type: 'SYSTEM_NOTE', text: `Details: ${getTelecrmDetails(body, phone)}` },
     ],
   };
 

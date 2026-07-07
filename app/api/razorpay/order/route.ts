@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
     const rawBody = await req.json();
     const amount = Number(rawBody.amount || 100);
     const currency = toText(rawBody.currency) || 'INR';
-    const formName = toText(rawBody.formName) || 'Hernia Consultation Booking Form';
+    const formName = toText(rawBody.formName) || 'Hernia-Vsl-Form';
     const source = toText(rawBody.source) || 'Hernia-LP';
     const name = toText(rawBody.name);
     const phone = toText(rawBody.phone);

@@ -10,7 +10,7 @@ type RazorpayResponse = {
   razorpay_signature: string;
 };
 
-const FORM_NAME = "Hernia Consultation Booking Form";
+const FORM_NAME = "Hernia-Vsl-Form";
 const SOURCE = "Hernia-LP";
 const CONSULTATION_AMOUNT = 100;
 

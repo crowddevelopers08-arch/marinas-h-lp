@@ -76,7 +76,7 @@ export async function POST(req: NextRequest) {
     }
 
     const payment = await paymentRes.json();
-    const formName = toText(rawBody.formName) || 'Hernia Consultation Booking Form';
+    const formName = toText(rawBody.formName) || 'Hernia-Vsl-Form';
     const source = toText(rawBody.source) || 'Hernia-LP';
     const name = toText(rawBody.name);
     const phone = toText(rawBody.phone);
