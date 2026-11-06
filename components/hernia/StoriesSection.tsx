@@ -1,19 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Reveal } from "./Reveal";
 
 const stories = [
-  // {
-  //   src: "https://res.cloudinary.com/dthj7fakc/video/upload/v1781762970/video1_kaazse.mp4",
-  //   caption: "Postpartum weight gain — is it always fat?",
-  // },
   {
-    src: "https://res.cloudinary.com/dthj7fakc/video/upload/v1781681467/A_lot_of_moms_tell_me_the_same_thing____I_still_look_pregnant..._even_years_after_delivery.___And_many_assume_it_s_just_stubborn_fat.__But_sometimes__the_rea_w2fn73.mp4",
-    caption: '"I still look pregnant... even years after delivery."',
+    id: "DZKXI_YPTdE",
+    caption: "Doctor guidance on hernia — watch the reel.",
   },
   {
-    src: "https://res.cloudinary.com/dthj7fakc/video/upload/v1781681467/Most_people_think_every_tummy_bulge_is_fat._But_sometimes__it_could_be_something_entirely_different._A_hernia_is_a_weakness_in_the_abdominal_wall_that_allow_gfuapm.mp4",
+    id: "DY4QVVOxov9",
     caption: "Not every tummy bulge is fat — it could be a hernia.",
   },
 ];
@@ -45,7 +41,6 @@ function getScrollStep(el: HTMLDivElement) {
 
 export function StoriesSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const isVideoPlayingRef = useRef(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
   function handleScroll() {
@@ -71,27 +66,6 @@ export function StoriesSection() {
     goTo(nextIndex);
   }
 
-  useEffect(() => {
-    const desktopQuery = window.matchMedia("(min-width: 621px)");
-    const mobileQuery = window.matchMedia("(max-width: 620px)");
-
-    const timer = window.setInterval(() => {
-      if (!desktopQuery.matches && !mobileQuery.matches) return;
-      if (mobileQuery.matches && isVideoPlayingRef.current) return;
-
-      const el = scrollRef.current;
-      if (!el) return;
-
-      setActiveIndex((currentIndex) => {
-        const nextIndex = (currentIndex + 1) % stories.length;
-        el.scrollTo({ left: getScrollStep(el) * nextIndex, behavior: "smooth" });
-        return nextIndex;
-      });
-    }, 4500);
-
-    return () => window.clearInterval(timer);
-  }, []);
-
   return (
     <section className="sec" id="stories">
       <div className="wrap">
@@ -111,27 +85,17 @@ export function StoriesSection() {
             </button>
 
             <div className="vids stories-carousel" ref={scrollRef} onScroll={handleScroll}>
-              {stories.map(({ src, caption }) => (
-                <div className="vid" key={src}>
-                  <video
-                    src={src}
-                    controls
-                    playsInline
-                    preload="metadata"
-                    onPlay={() => {
-                      isVideoPlayingRef.current = true;
-                    }}
-                    onPause={() => {
-                      isVideoPlayingRef.current = false;
-                    }}
-                    onEnded={() => {
-                      isVideoPlayingRef.current = false;
-                    }}
-                    style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "inherit", display: "block" }}
+              {stories.map(({ id, caption }) => (
+                <div className="vid" key={id}>
+                  <iframe
+                    src={`https://www.instagram.com/reel/${id}/embed/`}
+                    title={caption}
+                    loading="lazy"
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    allowFullScreen
+                    scrolling="no"
+                    style={{ width: "100%", height: "100%", border: 0, borderRadius: "inherit", display: "block", background: "#fff" }}
                   />
-                  <div className="ov" style={{ position: "relative", background: "none", pointerEvents: "none" }}>
-                    <div className="nm story-caption" style={{ pointerEvents: "none" }}>&quot;{caption}&quot;</div>
-                  </div>
                 </div>
               ))}
             </div>

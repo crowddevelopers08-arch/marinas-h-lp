@@ -14,9 +14,9 @@ const signs = [
 ];
 
 const image = (
-  <div className="ph" style={{ overflow: "hidden" }}>
+  <div className="ph" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", padding: 0, overflow: "hidden" }}>
     <img
-      src="https://res.cloudinary.com/dxntva1vn/image/upload/v1782744669/hernia_ygipmq.png"
+      src="/hernia_ygipmq.png"
       alt="Women patient"
       style={{
         width: "100%",
@@ -29,6 +29,9 @@ const image = (
     />
   </div>
 );
+
+// Match the frame to the image ratio so the full diagram shows edge to edge, no crop
+const visualStyle = { aspectRatio: "597 / 607" } as const;
 
 export function WomenSection() {
   const [isMobile, setIsMobile] = useState(false);
@@ -46,7 +49,7 @@ export function WomenSection() {
       <div className="wrap">
         <Reveal className="women-grid">
           {/* Desktop / tablet: image in left column */}
-          {!isMobile && <div className="women-visual">{image}</div>}
+          {!isMobile && <div className="women-visual" style={visualStyle}>{image}</div>}
 
           <div>
             <span className="badge-soft">For Women</span>
@@ -61,7 +64,7 @@ export function WomenSection() {
 
             {/* Mobile: image between paragraph and signs */}
             {isMobile && (
-              <div className="women-visual" style={{ margin: "20px 0" }}>
+              <div className="women-visual" style={{ ...visualStyle, margin: "20px 0" }}>
                 {image}
               </div>
             )}

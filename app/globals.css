@@ -1141,6 +1141,15 @@ header.nav {
   display: none;
 }
 
+.doc-photo .ph.ph-full {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+
 .doc-photo .ph {
   color: rgba(255, 255, 255, 0.7);
   font-size: 13.5px;

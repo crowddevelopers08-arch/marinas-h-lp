@@ -170,7 +170,7 @@ export function BookingModal() {
         order_id: orderId,
         name: "Marina's Clinic",
         description: "Hernia Consultation with Dr. Preethi Mrinalini",
-        image: "https://res.cloudinary.com/dthj7fakc/image/upload/v1781681465/logo-marinas_lm71bk.png",
+        image: "/logo-marinas_lm71bk.webp",
         prefill: {
           name: form.name,
           email: form.email,

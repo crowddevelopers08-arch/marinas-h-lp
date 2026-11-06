@@ -10,11 +10,11 @@ export function DoctorSection() {
         <Reveal className="doc-grid">
           {/* Desktop / tablet: photo in left column */}
           <div className="doc-photo doc-photo-desktop">
-            <div className="ph" style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "620px", overflow: "hidden" }}>
+            <div className="ph ph-full" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", padding: 0, overflow: "hidden" }}>
               <img
-                src="https://res.cloudinary.com/dthj7fakc/image/upload/v1781681953/dr-preethi-mrinalini_wmgdmk.webp"
+                src="/doctor-1.png"
                 alt="Dr. Preethi Mrinalini"
-                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "bottom", borderRadius: "inherit" }}
+                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", borderRadius: "inherit", display: "block" }}
               />
             </div>
           </div>
@@ -40,11 +40,11 @@ export function DoctorSection() {
             </p>
             {/* Mobile only: photo between bio and stats */}
             <div className="doc-photo doc-photo-mobile">
-              <div className="ph" style={{ display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
+              <div className="ph ph-full" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", padding: 0, overflow: "hidden" }}>
                 <img
-                  src="https://res.cloudinary.com/dthj7fakc/image/upload/v1781681953/dr-preethi-mrinalini_wmgdmk.webp"
+                  src="/doctor-1.png"
                   alt="Dr. Preethi Mrinalini"
-                  style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "bottom", borderRadius: "inherit" }}
+                  style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", borderRadius: "inherit", display: "block" }}
                 />
               </div>
             </div>

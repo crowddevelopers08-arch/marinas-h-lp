@@ -129,7 +129,7 @@ export default async function DashboardPage({
           <div className="dash-brand">
             <div className="dash-logo">
               <Image
-                src="https://res.cloudinary.com/dthj7fakc/image/upload/v1781681465/logo-marinas_lm71bk.png"
+                src="/logo-marinas_lm71bk.webp"
                 alt="Marina's Clinic"
                 width={48}
                 height={48}
