@@ -20,7 +20,7 @@ const images = [
     copy: "",
   },
   {
-    src: "https://res.cloudinary.com/daclbrdse/image/upload/v1782805703/5_vcpte1.png",
+    src: "/5_vcpte1.png",
     alt: "Hernia consultation reference image",
     label: "Recovery",
     title: "Plan with confidence",
