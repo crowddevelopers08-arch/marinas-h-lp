@@ -13,7 +13,7 @@ export function Footer() {
               <div className="brand">
                 <div style={{ background: "#fff", borderRadius: 10, padding: "6px 10px", display: "inline-flex", alignItems: "center" }}>
                   <Image
-                    src="/Marina-logo_v7lcbn.png"
+                    src="https://res.cloudinary.com/dxntva1vn/image/upload/v1794027007/Marina-logo_tjcywr.png"
                     alt="Preethi Mrinalini Clinic"
                     width={120}
                     height={48}

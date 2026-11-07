@@ -17,7 +17,7 @@ export function HeroSection() {
             {/* <span className="vsl-tag">Watch first</span> */}
             <div className="vsl-inner">
               <video
-                src="video-2.mp4"
+                src="https://res.cloudinary.com/dxntva1vn/video/upload/v1794027020/video-2_vlasgw.mp4"
                 controls
                 playsInline
                 style={{ width: "100%", borderRadius: "inherit", display: "block" }}
@@ -55,7 +55,7 @@ export function HeroSection() {
           <span className="vsl-tag">Watch first</span>
           <div className="vsl-inner">
             <video
-              src="video-2.mp4"
+              src="https://res.cloudinary.com/dxntva1vn/video/upload/v1794027020/video-2_vlasgw.mp4"
               controls
               playsInline
               style={{ width: "100%", borderRadius: "inherit", display: "block" }}

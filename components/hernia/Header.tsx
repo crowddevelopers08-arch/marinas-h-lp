@@ -15,7 +15,7 @@ export function Header() {
         <div className="nav-in">
           <div className="brand">
             <Image
-              src="/logo-marinas_lm71bk.webp"
+              src="https://res.cloudinary.com/dxntva1vn/image/upload/v1794027007/Marina-logo_tjcywr.png"
               alt="Preethi Mrinalini Clinic"
               width={130}
               height={52}

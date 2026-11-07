@@ -22,18 +22,18 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/Marina-logo_v7lcbn.png",
+        url: "https://res.cloudinary.com/dxntva1vn/image/upload/v1794027007/Marina-logo_tjcywr.png",
         sizes: "32x32",
         type: "image/png",
       },
       {
-        url: "/Marina-logo_v7lcbn.png",
+        url: "https://res.cloudinary.com/dxntva1vn/image/upload/v1794027007/Marina-logo_tjcywr.png",
         sizes: "192x192",
         type: "image/png",
       },
     ],
     apple:
-      "/Marina-logo_v7lcbn.png",
+      "https://res.cloudinary.com/dxntva1vn/image/upload/v1794027007/Marina-logo_tjcywr.png",
   },
 
   };

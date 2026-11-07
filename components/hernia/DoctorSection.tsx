@@ -12,7 +12,7 @@ export function DoctorSection() {
           <div className="doc-photo doc-photo-desktop">
             <div className="ph ph-full" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", padding: 0, overflow: "hidden" }}>
               <img
-                src="/doctor-1.png"
+                src="https://res.cloudinary.com/dxntva1vn/image/upload/v1794027007/doctor-1_c8ms3x.png"
                 alt="Dr. Preethi Mrinalini"
                 style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", borderRadius: "inherit", display: "block" }}
               />
@@ -42,7 +42,7 @@ export function DoctorSection() {
             <div className="doc-photo doc-photo-mobile">
               <div className="ph ph-full" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", padding: 0, overflow: "hidden" }}>
                 <img
-                  src="/doctor-1.png"
+                  src="https://res.cloudinary.com/dxntva1vn/image/upload/v1794027007/doctor-1_c8ms3x.png"
                   alt="Dr. Preethi Mrinalini"
                   style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", borderRadius: "inherit", display: "block" }}
                 />

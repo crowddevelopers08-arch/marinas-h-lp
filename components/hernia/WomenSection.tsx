@@ -16,7 +16,7 @@ const signs = [
 const image = (
   <div className="ph" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", padding: 0, overflow: "hidden" }}>
     <img
-      src="/hernia_ygipmq.png"
+      src="https://res.cloudinary.com/dxntva1vn/image/upload/v1794027219/hernia_ygipmq_m4nrkf.png"
       alt="Women patient"
       style={{
         width: "100%",

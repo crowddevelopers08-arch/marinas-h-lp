@@ -6,21 +6,21 @@ import { Reveal } from "./Reveal";
 
 const images = [
   {
-    src: "/bfaf.png",
+    src: "https://res.cloudinary.com/dxntva1vn/image/upload/v1794027005/bf-6_wg4rar.png",
     alt: "Hernia treatment reference image",
     label: "Diagnosis",
     title: "Understand the bulge",
     copy: "A clear visual starting point before treatment is planned.",
   },
   {
-    src: "/bfaf-8.png",
+    src: "https://res.cloudinary.com/dxntva1vn/image/upload/v1794027006/bf-7_xy3kyc.png",
     alt: "Modern hernia care reference image",
     label: "",
     title: "",
     copy: "",
   },
   {
-    src: "/5_vcpte1.png",
+    src: "https://res.cloudinary.com/dxntva1vn/image/upload/v1794027007/bf-4_ijrzqd.png",
     alt: "Hernia consultation reference image",
     label: "Recovery",
     title: "Plan with confidence",
