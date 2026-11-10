@@ -24,8 +24,8 @@ export async function POST(req: NextRequest) {
       await prisma.paymentRecord.upsert({
         where: { razorpayOrderId },
         create: {
-          formName: toText(rawBody.formName) || 'Hernia-Vsl-Form',
-          source: toText(rawBody.source) || 'Hernia-LP',
+          formName: toText(rawBody.formName) || 'HC-VSL-Leads',
+          source: toText(rawBody.source) || 'HCVSL-Form',
           name: toText(rawBody.name),
           phone: toText(rawBody.phone),
           email: toText(rawBody.email) || null,
@@ -38,8 +38,8 @@ export async function POST(req: NextRequest) {
         },
         update: {
           paymentStatus: 'failed',
-          formName: toText(rawBody.formName) || 'Hernia-Vsl-Form',
-          source: toText(rawBody.source) || 'Hernia-LP',
+          formName: toText(rawBody.formName) || 'HC-VSL-Leads',
+          source: toText(rawBody.source) || 'HCVSL-Form',
           name: toText(rawBody.name),
           phone: toText(rawBody.phone),
           email: toText(rawBody.email) || null,

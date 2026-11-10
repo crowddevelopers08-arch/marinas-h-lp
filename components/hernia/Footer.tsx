@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { PAYMENTS_ENABLED } from "@/lib/config";
 
 const PHONE_NUMBER = "+91 98840 00171";
 const PHONE_HREF = "tel:+919884000171";
@@ -23,7 +24,7 @@ export function Footer() {
                 <small>Advanced Laparoscopic &amp; Hernia Surgeon</small>
               </div>
               <a href="#book" className="btn">
-                Book consultation - Rs.800
+                Book consultation{PAYMENTS_ENABLED ? " - Rs.800" : ""}
               </a>
             </div>
             <p className="disc">

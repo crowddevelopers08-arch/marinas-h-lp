@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { PAYMENTS_ENABLED } from "@/lib/config";
 
 type Form = { name: string; email: string; phone: string; concern: string };
 type Status = "idle" | "loading" | "paying" | "verifying" | "error";
@@ -10,9 +11,10 @@ type RazorpayResponse = {
   razorpay_signature: string;
 };
 
-const FORM_NAME = "Hernia-Vsl-Form";
-const SOURCE = "Hernia-LP";
+const FORM_NAME = "HC-VSL-Leads";
+const SOURCE = "HCVSL-Form";
 const CONSULTATION_AMOUNT = 100;
+
 
 declare global {
   interface Window {
@@ -114,10 +116,57 @@ export function BookingModal() {
     window.location.href = "/thank-you";
   }
 
+  // Saves the lead and waits for it (retries on failure) so no lead is lost
+  // when the page navigates to /thank-you.
+  async function saveLeadReliably() {
+    const payload = JSON.stringify({
+      source: SOURCE,
+      formName: FORM_NAME,
+      name: form.name,
+      phone: form.phone,
+      email: form.email,
+      concern: form.concern || "Not shared",
+      pageUrl: window.location.href,
+      paymentStatus: "lead_created",
+    });
+
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 20000);
+      try {
+        const res = await fetch("/api/submissions", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: payload,
+          keepalive: true,
+          signal: controller.signal,
+        });
+        clearTimeout(timer);
+        if (res.ok) return true;
+        if (res.status === 400) return false; // invalid input, retrying will not help
+      } catch {
+        clearTimeout(timer);
+      }
+      await new Promise((r) => setTimeout(r, 800 * attempt));
+    }
+    return false;
+  }
+
   async function submit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("loading");
     setErrorMsg("");
+
+    if (!PAYMENTS_ENABLED) {
+      const saved = await saveLeadReliably();
+      if (saved) {
+        goToThankYou();
+      } else {
+        setErrorMsg("We could not submit your details. Please check your name and phone number and try again.");
+        setStatus("idle");
+      }
+      return;
+    }
 
     try {
       // 1. Save lead first (non-blocking on failure)
@@ -266,7 +315,7 @@ export function BookingModal() {
             <div className="modal-header">
               <span className="eyebrow" style={{ marginBottom: 8 }}>Book a consultation</span>
               <h2 id="modal-title" className="modal-title">Get clarity on your condition</h2>
-              <p className="modal-sub">Rs.800 · Reviewed personally by Dr. Preethi Mrinalini</p>
+              <p className="modal-sub">{PAYMENTS_ENABLED ? "Rs.800 · " : ""}Reviewed personally by Dr. Preethi Mrinalini</p>
             </div>
 
             <form className="modal-form" onSubmit={submit} noValidate>
@@ -329,9 +378,15 @@ export function BookingModal() {
               {errorMsg && <p className="modal-error">{errorMsg}</p>}
 
               <button type="submit" className="btn modal-submit" disabled={isLoading}>
-                {status === "loading" ? "Preparing payment…" : status === "paying" ? "Opening checkout…" : "Pay Rs.800 & Book Slot"}
+                {!PAYMENTS_ENABLED
+                  ? status === "loading" ? "Submitting…" : "Book My Consultation"
+                  : status === "loading" ? "Preparing payment…" : status === "paying" ? "Opening checkout…" : "Pay Rs.800 & Book Slot"}
               </button>
-              <p className="modal-fine">Secure payment via Razorpay · UPI / Card / NetBanking</p>
+              <p className="modal-fine">
+                {PAYMENTS_ENABLED
+                  ? "Secure payment via Razorpay · UPI / Card / NetBanking"
+                  : "Our team will call you to confirm your consultation slot."}
+              </p>
             </form>
           </>
         )}

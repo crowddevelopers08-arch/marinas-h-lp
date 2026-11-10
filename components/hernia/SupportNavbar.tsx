@@ -16,7 +16,7 @@ export default function SupportNavbar() {
         <div className="snav-inner">
           <a href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
             <Image
-              src="/logo-marinas_lm71bk.webp"
+              src="https://res.cloudinary.com/dxntva1vn/image/upload/v1794027007/Marina-logo_tjcywr.png"
               alt="Marina's Clinic"
               width={150}
               height={82}

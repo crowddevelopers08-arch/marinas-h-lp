@@ -1,4 +1,5 @@
 import { Reveal } from "./Reveal";
+import { PAYMENTS_ENABLED } from "@/lib/config";
 
 const points = [
   "Limited slots each week",
@@ -20,8 +21,8 @@ export function FinalCtaSection() {
             Reserve your consultation with Dr. Preethi Mrinalini and finally understand
             your condition - before it affects your quality of life.
           </p>
-          <a href="#" className="btn">
-            Book my consultation - Rs.800
+          <a href="#book" className="btn">
+            Book my consultation{PAYMENTS_ENABLED ? " - Rs.800" : ""}
           </a>
           <div className="reassure">
             {points.map((point) => (

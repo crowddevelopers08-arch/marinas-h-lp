@@ -33,12 +33,12 @@ function toText(value: unknown): string {
 
 function normalizeSubmission(body: Record<string, unknown>): SubmissionBody {
   return {
-    formName: toText(body.formName) || 'Hernia-Vsl-Form',
-    source: toText(body.source) || 'Bariatric-Form',
+    formName: toText(body.formName) || 'HC-VSL-Leads',
+    source: toText(body.source) || 'HCVSL-Form',
     name: toText(body.name),
     phone: toText(body.phone),
     email: toText(body.email),
-    concern: toText(body.concern),
+    concern: toText(body.concern) || 'Not shared',
     pageUrl: toText(body.pageUrl),
     paymentId: toText(body.paymentId),
     paymentStatus: toText(body.paymentStatus),
@@ -68,7 +68,7 @@ function appendLocalRow(row: string[]) {
 }
 
 async function pushToGAS(body: SubmissionBody, timestamp: string, telecrmStatus: string) {
-  const url = process.env.NEXT_PUBLIC_GAS_URL;
+  const url = process.env.GOOGLE_APPS_SCRIPT_URL || process.env.NEXT_PUBLIC_GAS_URL;
   if (!url) return null;
 
   const row = [
@@ -238,9 +238,9 @@ export async function POST(req: NextRequest) {
     const rawBody = await req.json();
     const body = normalizeSubmission(rawBody);
 
-    if (!body.name || !body.phone || !body.concern) {
+    if (!body.name || !body.phone) {
       return NextResponse.json(
-        { success: false, error: 'Name, phone, and condition are required' },
+        { success: false, error: 'Name and phone are required' },
         { status: 400 },
       );
     }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { PAYMENTS_ENABLED } from "@/lib/config";
 
 export function StickyBar() {
   const [show, setShow] = useState(false);
@@ -22,7 +23,7 @@ export function StickyBar() {
     <div className={`sticky ${show ? "show" : ""}`}>
       <div className="sticky-in">
         <div className="l">
-          <b>Rs.800</b>
+          <b>{PAYMENTS_ENABLED ? "Rs.800" : "Consultation"}</b>
           <span>Hernia &amp; diastasis consultation - limited weekly slots</span>
         </div>
         <a href="#book" className="btn">

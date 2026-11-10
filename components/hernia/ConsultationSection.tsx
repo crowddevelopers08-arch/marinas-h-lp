@@ -1,5 +1,6 @@
 import { CheckIcon } from "./Icons";
 import { Reveal } from "./Reveal";
+import { PAYMENTS_ENABLED } from "@/lib/config";
 
 const includes = [
   [
@@ -61,10 +62,12 @@ export function ConsultationSection() {
           </div>
 
           <div className="offer-card">
-            <div className="kicker">Consultation fee</div>
-            <div className="price">
-              <small>Rs.</small>800
-            </div>
+            <div className="kicker">{PAYMENTS_ENABLED ? "Consultation fee" : "Consultation"}</div>
+            {PAYMENTS_ENABLED && (
+              <div className="price">
+                <small>Rs.</small>800
+              </div>
+            )}
             <div className="price-sub">One focused session with the surgeon</div>
             <a href="#book" className="btn">
               Book my consultation

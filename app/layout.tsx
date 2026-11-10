@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
+import { PAYMENTS_ENABLED } from "@/lib/config";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
   title:
     "Hernia Consultation with Dr. Preethi Mrinalini - Understand Your Condition Before It Worsens",
   description:
-    "A bulge, heaviness, or post-pregnancy bulge that won't go away? Book a detailed hernia and diastasis recti assessment with Dr. Preethi Mrinalini , Advanced Laparoscopic Surgeon. Consultation Rs.800.",
+    `A bulge, heaviness, or post-pregnancy bulge that won't go away? Book a detailed hernia and diastasis recti assessment with Dr. Preethi Mrinalini , Advanced Laparoscopic Surgeon.${PAYMENTS_ENABLED ? " Consultation Rs.800." : ""}`,
   icons: {
     icon: [
       {

@@ -1,4 +1,5 @@
 import { CheckIcon, PlayIcon } from "./Icons";
+import { PAYMENTS_ENABLED } from "@/lib/config";
 
 export function HeroSection() {
   return (
@@ -32,7 +33,7 @@ export function HeroSection() {
           </p>
           <div className="hero-cta">
             <a href="#book" className="btn">
-              Book my consultation <span className="sub">Rs.800</span>
+              Book my consultation{PAYMENTS_ENABLED && <span className="sub">Rs.800</span>}
             </a>
             <a href="#check" className="btn btn-ghost">
               Check my symptoms

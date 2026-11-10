@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Reveal } from "./Reveal";
+import { PAYMENTS_ENABLED } from "@/lib/config";
 
 const faqs = [
   [
@@ -22,7 +23,7 @@ const faqs = [
   ],
   [
     "What is the consultation fee, and what does it include?",
-    "The fee is Rs.800. It includes a detailed assessment, symptom evaluation, review of your reports and scans, discussion of treatment options, recovery expectations, and surgical guidance if required.",
+    `${PAYMENTS_ENABLED ? "The fee is Rs.800. It" : "The consultation"} includes a detailed assessment, symptom evaluation, review of your reports and scans, discussion of treatment options, recovery expectations, and surgical guidance if required.`,
   ],
   [
     "Can I come for just a second opinion?",
